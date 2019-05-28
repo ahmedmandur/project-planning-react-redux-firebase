@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createProject } from '../../store/actions/projectActions';
 class CreateProject extends Component {
   state = {
-    title: "",
-    content: ""
+    title: '',
+    content: ''
   };
 
   handleChange = e => {
@@ -14,50 +15,54 @@ class CreateProject extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
+    this.props.createProject(this.state);
   };
 
   render() {
     return (
       <div className="container">
-        <div className="row">
-          <div className="col s12 m12">
-            <form className="white" onSubmit={this.handleSubmit}>
-              <h5 className="grey-text text-darken-3">Create new project!</h5>
-              <div className="col s12 m5">
-                <div className="input-field">
-                  <label htmlFor="title">Title</label>
-                  <input
-                    type="text"
-                    id="title"
-                    onChange={this.handleChange}
-                    autoComplete="off"
-                  />
-                </div>
+        <div className="col s12 m12">
+          <form className="white" onSubmit={this.handleSubmit}>
+            <h5 className="grey-text text-darken-3">Create new project!</h5>
+            <div className="col s12 m5">
+              <div className="input-field">
+                <label htmlFor="title">Title</label>
+                <input
+                  type="text"
+                  id="title"
+                  onChange={this.handleChange}
+                  autoComplete="off"
+                />
               </div>
-              <div className="col s12 m12">
-                <div className="input-field">
-                  <label htmlFor="content">Content</label>
-                  <textarea
-                    id="content"
-                    onChange={this.handleChange}
-                    className="materialize-textarea"
-                  />
-                </div>
+            </div>
+            <div className="col s12 m12">
+              <div className="input-field">
+                <label htmlFor="content">Content</label>
+                <textarea
+                  id="content"
+                  onChange={this.handleChange}
+                  className="materialize-textarea"
+                />
               </div>
-              <div className="col s12 m12">
-                <div className="input-field">
-                  <button className="btn pink lighten-1 z-depth-0">
-                    Create
-                  </button>
-                </div>
+            </div>
+            <div className="col s12 m12">
+              <div className="input-field">
+                <button className="btn pink lighten-1 z-depth-0">Create</button>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     );
   }
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    createProject: project => dispatch(createProject(project))
+  };
+};
 
-export default CreateProject;
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreateProject);

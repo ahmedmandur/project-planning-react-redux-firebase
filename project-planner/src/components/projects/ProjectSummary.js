@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-const ProjectSummary = props => {
+const ProjectSummary = ({ project }) => {
   return (
     <div className="card z-depth-0 project-summary">
       <div className="card-content grey-text text-darken-3">
-        <span className="card-title">{props.title}</span>
-        <p>Posted by {props.author}</p>
-        <p className="grey-text">{props.publishDate}</p>
+        <span className="card-title">{project.title}</span>
+        <p>Posted by {project.author}</p>
+        <p className="grey-text">{project.publishDate}</p>
       </div>
     </div>
   );

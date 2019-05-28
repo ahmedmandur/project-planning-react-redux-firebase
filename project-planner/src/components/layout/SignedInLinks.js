@@ -1,10 +1,10 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 const SignedInLinks = () => {
   return (
     <ul className="right">
       <li>
-        <NavLink to="/">New Project</NavLink>
+        <NavLink to="/project/new">New Project</NavLink>
       </li>
       <li>
         <NavLink to="/">Log Out</NavLink>
