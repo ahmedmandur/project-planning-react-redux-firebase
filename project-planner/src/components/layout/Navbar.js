@@ -14,11 +14,12 @@ const Navbar = props => {
         <Link to="/" className="brand-logo">
           Project Planner
         </Link>
-        {isEmpty ? <SignedOutLinks /> : <SignedInLinks />}
+        {auth.isEmpty ? <SignedOutLinks /> : <SignedInLinks />}
       </div>
     </nav>
   );
 };
+
 const mapStateToProps = (state, ownProps) => {
   return {
     auth: state.firebase.auth
