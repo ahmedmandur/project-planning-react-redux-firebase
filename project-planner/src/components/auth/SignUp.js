@@ -1,12 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class SignUp extends Component {
   state = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: ""
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
   };
 
   handleChange = e => {
@@ -21,6 +23,8 @@ class SignUp extends Component {
   };
 
   render() {
+    const { auth } = this.props;
+    if (auth.uid) return <Redirect to="/" exact />;
     return (
       <div className="container">
         <div className="row">
@@ -85,4 +89,12 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+const mapStateToProps = (state, ownProps) => ({
+  authError: state.auth.authError,
+  auth: state.firebase.auth
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(SignUp);

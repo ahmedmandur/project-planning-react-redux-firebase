@@ -1,12 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import SignedInLinks from "./SignedInLinks";
-import SignedOutLinks from "./SignedOutLinks";
-import { connect } from "react-redux";
-import { isEmpty } from "react-redux-firebase";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import SignedInLinks from './SignedInLinks';
+import SignedOutLinks from './SignedOutLinks';
+import { connect } from 'react-redux';
 
 const Navbar = props => {
-  const { auth } = props.auth;
+  const { isEmpty } = props.auth;
 
   return (
     <nav className="nav-wrapper grey darken-3">
@@ -14,7 +13,7 @@ const Navbar = props => {
         <Link to="/" className="brand-logo">
           Project Planner
         </Link>
-        {auth.isEmpty ? <SignedOutLinks /> : <SignedInLinks />}
+        {isEmpty ? <SignedOutLinks /> : <SignedInLinks />}
       </div>
     </nav>
   );
