@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
-import { moment } from 'moment';
+import moment from 'moment';
+
 const ProjectDetails = props => {
   const { project } = props;
-  console.log(project);
+
   if (project) {
     return (
       <div className="container section project-details">
