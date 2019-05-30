@@ -1,19 +1,19 @@
-const functions = require("firebase-functions");
-const admin = require("firebase-admin");
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
 const createNotification = notification => {
   return admin
     .firestore()
-    .collection("notifications")
+    .collection('notifications')
     .add(notification)
     .then(doc => {
-      console.log("notification is added", doc);
+      console.log('notification is added', doc);
     });
 };
 
 exports.projectCreated = functions.firestore
-  .document("projects/{projectId}")
+  .document('projects/{projectId}')
   .onCreate(doc => {
     const project = doc.data();
     const notification = {
@@ -28,12 +28,12 @@ exports.projectCreated = functions.firestore
 exports.userJoined = functions.auth.user().onCreate(user => {
   return admin
     .firestore()
-    .collection("users")
+    .collection('users')
     .doc(user.uid)
     .get()
     .then(usr => {
-      console.log("user data", usr);
-      const newUser = usr.data;
+      console.log('user data', usr);
+      const newUser = usr.data();
       const notification = {
         content: `Joined!`,
         user: `${newUser.firstName} ${newUser.lastName}`,

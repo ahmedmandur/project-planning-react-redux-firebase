@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signUp } from '../../store/actions/authActions';
+import { Helmet } from 'react-helmet';
+
 class SignUp extends Component {
   state = {
     firstName: '',
@@ -27,6 +29,9 @@ class SignUp extends Component {
     if (auth.uid) return <Redirect to="/" exact />;
     return (
       <div className="container">
+        <Helmet>
+          <title>Sign Up - Project Planner</title>
+        </Helmet>
         <div className="row">
           <div className="col s12 m6 offset-m3">
             <form className="white" onSubmit={this.handleSubmit}>

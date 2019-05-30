@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import moment from 'moment';
+import { Helmet } from 'react-helmet';
 
 const ProjectDetails = props => {
   const { project } = props;
@@ -10,6 +11,9 @@ const ProjectDetails = props => {
   if (project) {
     return (
       <div className="container section project-details">
+        <Helmet>
+          <title>{project.title} - Project Planner</title>
+        </Helmet>
         <div className="card z-depth-0">
           <div className="card-content">
             <span className="card-title">{project.title}</span>

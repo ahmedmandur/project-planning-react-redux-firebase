@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createProject } from '../../store/actions/projectActions';
 import { Redirect } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 class CreateProject extends Component {
   state = {
@@ -27,6 +28,9 @@ class CreateProject extends Component {
     if (!auth.uid) return <Redirect to="/signIn" />;
     return (
       <div className="container">
+        <Helmet>
+          <title>New Project - Project Planner</title>
+        </Helmet>
         <div className="col s12 m12">
           <form className="white" onSubmit={this.handleSubmit}>
             <h5 className="grey-text text-darken-3">Create new project!</h5>
