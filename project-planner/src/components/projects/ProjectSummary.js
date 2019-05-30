@@ -1,5 +1,5 @@
-import React from 'react';
-import moment from 'moment';
+import React from "react";
+import moment from "moment";
 const ProjectSummary = ({ project }) => {
   return (
     <div className="card z-depth-0 project-summary">
@@ -9,7 +9,7 @@ const ProjectSummary = ({ project }) => {
           Posted by {project.authorFirstName} {project.authorLastName}
         </p>
         <p className="grey-text">
-          {moment(project.createdAt.toDate()).format('DD/MM/YYYY hh:mm A')}
+          {moment(project.createdAt.toDate()).format("DD/MM/YYYY hh:mm A")}
         </p>
       </div>
     </div>
